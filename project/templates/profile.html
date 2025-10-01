@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Личный кабинет</h1>
+    <p style="margin-bottom: 1.5rem;">Добро пожаловать, <a href="#">{{ user.email }}</a>!</p>
+
+    <div class="profile-layout">
+        <nav class="profile-nav">
+            <a href="#">Мои книги</a>
+            <a href="#">История просмотров</a>
+            <a href="#">Настройки профиля</a>
+        </nav>
+        <div class="profile-content">
+            <h2>Здесь будет отображаться информация о выбранном разделе.</h2>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,52 @@
+<!-- templates/book_detail.html -->
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="book-detail-layout">
+    <div class="book-cover-large-container">
+    {% if book.cover_image %}
+        <img src="{{ book.cover_image.url }}" alt="{{ book.title }}">
+    {% endif %}
+    </div>
+    <div class="book-info">
+        <h1>{{ book.title }}</h1>
+        <p class="author">{{ book.author }}</p>
+        <p class="description">{{ book.description }}</p>
+    </div>
+</div>
+
+<hr style="margin: 3rem 0;">
+
+<!-- НАЧАЛО НОВОГО БЛОКА С ОТЗЫВАМИ -->
+<div class="reviews-section">
+    <h2 class="section-title">Отзывы читателей</h2>
+    
+    {% for review in reviews %}
+        <div class="review-card">
+            <p class="review-author"><strong>{{ review.user.username }}</strong></p>
+            <p class="review-date">{{ review.created_at|date:"d.m.Y" }}</p>
+            <p class="review-text">{{ review.text }}</p>
+        </div>
+    {% empty %}
+        <p>На эту книгу еще нет отзывов. Станьте первым!</p>
+    {% endfor %}
+</div>
+<!-- КОНЕЦ НОВОГО БЛОКА С ОТЗЫВАМИ -->
+
+
+<hr style="margin: 2rem 0;">
+
+<div class="add-review-section">
+{% if user.is_authenticated %}
+    <h3>Оставить отзыв</h3>
+    <form method="POST" action="{% url 'book_detail' book.id %}" style="margin-top: 1rem;">
+        {% csrf_token %} <!-- Обязательная защита Django -->
+        {{ form.as_p }} <!-- Django сам отрисует поля формы -->
+        <button type="submit" class="btn" style="margin-top: 1rem; width: auto;">Отправить</button>
+    </form>
+{% else %}
+    <p>Чтобы оставить отзыв, пожалуйста, <a href="{% url 'login' %}">войдите в систему</a>.</p>
+{% endif %}
+</div>
+
+{% endblock %}

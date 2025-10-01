@@ -1,0 +1,44 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Онлайн-библиотека OnLib2</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="/" class="logo">&lt; OnLib2</a>
+            <ul>
+                <li><a href="{% url 'catalog' %}">Каталог</a></li>
+                {% if user.is_authenticated %}
+                    <!-- Если пользователь вошел в систему -->
+                    <li><a href="{% url 'profile' %}">Личный кабинет</a></li>
+                    <li>
+                        <form action="{% url 'logout' %}" method="POST" style="display: inline;">
+                            {% csrf_token %}
+                            <button type="submit" class="nav-link-button">Выход</button>
+                        </form>
+                    </li>
+                {% else %}
+                    <!-- Если пользователь гость -->
+                    <li><a href="{% url 'login' %}">Вход</a></li>
+                    <li><a href="{% url 'register' %}">Регистрация</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Сюда будет вставляться уникальный контент каждой страницы -->
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <footer>
+        <p>© 2025 OnLib2. Все права защищены.</p>
+    </footer>
+</body>
+</html>

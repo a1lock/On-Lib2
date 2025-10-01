@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <!-- Приветственный блок -->
+    <section class="hero">
+        <h1>Откройте свой мир знаний</h1>
+        <p>Тысячи книг доступны онлайн. Начните свое путешествие сегодня.</p>
+        <a href="{% url 'catalog' %}" class="btn">Перейти в Каталог</a>
+    </section>
+
+    <!-- Секция с популярными книгами -->
+    <section class="featured-books">
+        <h2 class="section-title">Популярные книги</h2>
+
+        <div class="books-grid">
+            {% for book in latest_books %}
+                <a href="{% url 'book_detail' book.id %}" class="book-card-link">
+                    <div class="book-card">
+                        {% if book.cover_image %}
+                            <img src="{{ book.cover_image.url }}" alt="{{ book.title }}" class="cover-placeholder">
+                        {% else %}
+                            <div class="cover-placeholder"></div>
+                        {% endif %}
+                        <h3>{{ book.title }}</h3>
+                        <p>{{ book.author }}</p>
+                    </div>    
+                </a>
+            {% empty %}
+                <p>Книг пока нет.</p>
+            {% endfor %}
+        </div>
+    </section>
+{% endblock %}
