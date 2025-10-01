@@ -1,0 +1,379 @@
+/* static/css/style.css - НОВАЯ ВЕРСИЯ */
+
+/* --- 1. Глобальные стили и переменные --- */
+:root {
+    --primary-color: #3b82f6; /* Основной синий цвет */
+    --primary-hover-color: #2563eb;
+    --background-color: #f8f9fa; /* Очень светлый серый фон */
+    --card-background-color: #ffffff;
+    --form-background-color: #f1f5f9; /* Светло-серый фон для форм */
+    --text-color: #1f2937;
+    --muted-text-color: #6b7280;
+    --border-color: #e5e7eb;
+    --hero-bg-color: #ADD8E6; 
+    --border-radius-md: 8px;
+    --border-radius-sm: 4px;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+main {
+    flex-grow: 1;
+    width: 100%;
+    max-width: 70%;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+}
+
+/* --- 2. Шапка (Header) и Подвал (Footer) --- */
+header {
+    background-color: var(--card-background-color);
+    padding: 1rem 2rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+header nav {
+    max-width: 960px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header nav .logo {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--text-color);
+    text-decoration: none;
+}
+
+header nav ul {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+}
+
+
+footer {
+    text-align: center;
+    padding: 2rem 1rem;
+    color: var(--muted-text-color);
+    font-size: 0.9rem;
+}
+
+/* --- 3. Формы (Вход, Регистрация) --- */
+.form-container {
+    max-width: 400px;
+    margin: 2rem auto;
+    padding: 2.5rem 2rem;
+    background-color: var(--form-background-color);
+    border-radius: var(--border-radius-md);
+    border: 1px solid var(--border-color);
+}
+
+.form-container h1 {
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+}
+
+form p {
+    margin-bottom: 1.25rem;
+}
+
+form label {
+    display: none; /* Прячем стандартные лейблы Django */
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    border: 1px solid #cbd5e1;
+    border-radius: var(--border-radius-sm);
+    font-size: 1rem;
+    background-color: #fff;
+}
+
+.btn {
+    display: inline-block;
+    width: 100%;
+    padding: 0.8rem 1rem;
+    border: none;
+    border-radius: var(--border-radius-sm);
+    background-color: var(--primary-color);
+    color: white;
+    font-size: 1rem;
+    font-weight: 500;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.btn:hover {
+    background-color: var(--primary-hover-color);
+    text-decoration: none;
+    color: white;
+}
+
+.form-link {
+    display: block;
+    text-align: center;
+    margin-top: 1.5rem;
+    color: var(--muted-text-color);
+}
+
+
+/* --- 4. Главная страница --- */
+.hero {
+    text-align: center;
+    padding: 4rem 1rem;
+    background-color: var(--hero-bg-color);
+    border-radius: var(--border-radius-md);
+    margin-bottom: 3rem;
+}
+
+.hero h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.hero p {
+    font-size: 1.1rem;
+    color: var(--muted-text-color);
+    margin-bottom: 2rem;
+}
+
+.hero .btn {
+    width: auto;
+    padding: 0.8rem 2.5rem;
+}
+
+.section-title {
+    font-size: 1.75rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+}
+
+/* --- 5. Каталог и Карточки книг --- */
+.search-form {
+    display: flex;
+    margin-bottom: 2rem;
+}
+
+.search-form input {
+    flex-grow: 1;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-right: none;
+}
+
+.search-form .btn {
+    width: auto;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.books-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 1.5rem;
+}
+
+.book-card-link {
+    text-decoration: none;
+    color: var(--text-color);
+}
+
+.book-card .cover-placeholder {
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 2 / 3; /* Пропорции книжной обложки */
+    background-color: #e2e8f0;
+    border-radius: var(--border-radius-sm);
+    margin-bottom: 0.75rem;
+    object-fit: cover;
+}
+
+.book-card h3 {
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.book-card p {
+    font-size: 0.9rem;
+    color: var(--muted-text-color);
+}
+
+/* --- 6. Личный кабинет --- */
+.profile-layout {
+    display: flex;
+    gap: 2rem;
+    align-items: flex-start;
+}
+
+.profile-nav {
+    flex: 0 0 220px;
+    background-color: var(--card-background-color);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-md);
+}
+
+.profile-nav a {
+    display: block;
+    padding: 1rem;
+    color: var(--muted-text-color);
+    text-decoration: none;
+    border-bottom: 1px solid var(--border-color);
+    cursor: not-allowed; /* Делаем некликабельным */
+    opacity: 0.7;
+}
+
+.profile-nav a:last-child {
+    border-bottom: none;
+}
+
+.profile-content {
+    flex-grow: 1;
+    padding: 2rem;
+    background-color: var(--card-background-color);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-md);
+    min-height: 200px;
+}
+
+.profile-content h2 {
+    font-size: 1.25rem;
+    color: var(--muted-text-color);
+}
+
+
+/* --- 7. Страница детального просмотра книги --- */
+.book-detail-layout {
+    display: flex;
+    gap: 3rem;
+    align-items: flex-start;
+}
+
+/* Новый контейнер-рамка для большой обложки */
+.book-cover-large-container {
+    flex: 0 0 300px; /* Фиксированная ширина 300px */
+    aspect-ratio: 2 / 3; /* Жесткие пропорции, как у книги */
+    background-color: #e2e8f0; /* Фон для случая, если нет картинки */
+    border-radius: var(--border-radius-md);
+    overflow: hidden; /* Обрезаем все, что выходит за рамки */
+}
+
+/* Стиль для самого изображения внутри рамки */
+.book-cover-large-container img {
+    width: 100%; /* Растягиваем изображение на всю ширину рамки */
+    height: 100%; /* Растягиваем изображение на всю высоту рамки */
+    object-fit: cover; /* Сохраняем пропорции, обрезая лишнее */
+}
+
+
+.book-info {
+    flex-grow: 1;
+}
+.book-info h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+}
+.book-info .author {
+    font-size: 1.5rem;
+    color: var(--muted-text-color);
+    margin-bottom: 1.5rem;
+}
+.book-info .description {
+    line-height: 1.7;
+}
+
+/* --- ИСПРАВЛЕННЫЕ СТИЛИ ДЛЯ НАВИГАЦИИ В ШАПКЕ --- */
+
+/* Общий базовый стиль для ссылок и кнопки "Выход" */
+header nav ul a,
+.nav-link-button {
+    font-size: 1rem;
+    text-decoration: none;
+    color: var(--muted-text-color);
+    padding-bottom: 4px; /* Отступ для линии снизу */
+    border-bottom: 2px solid transparent; /* Изначально прозрачная линия */
+    transition: color 0.2s, border-color 0.2s;
+}
+
+/* Общий стиль при наведении/фокусе для ссылок и кнопки "Выход" */
+header nav ul a:hover,
+header nav ul a.active,
+.nav-link-button:hover,
+.nav-link-button:focus {
+    color: var(--primary-color);
+    border-bottom-color: var(--primary-color); /* Делаем линию видимой */
+}
+
+/* Уникальные стили только для кнопки "Выход", чтобы она вела себя как ссылка */
+.nav-link-button {
+    background: none;
+    border-top: none; /* Убираем все рамки, кроме нижней, которую мы уже стилизовали */
+    border-right: none;
+    border-left: none;
+    outline: none;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 0;
+    font-family: inherit;
+    cursor: pointer;
+}
+
+/* --- 8. Стили для секции отзывов --- */
+.review-card {
+    background-color: var(--card-background-color);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-md);
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+    position: relative;
+}
+
+.review-author {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+}
+
+.review-date {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    font-size: 0.9rem;
+    color: var(--muted-text-color);
+}
+
+.review-text {
+    line-height: 1.6;
+}
+
+/* Стили для поля ввода отзыва */
+.add-review-section form textarea {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    border: 1px solid #cbd5e1;
+    border-radius: var(--border-radius-sm);
+    font-size: 1rem;
+    background-color: #fff;
+    font-family: inherit;
+}
